@@ -8,9 +8,7 @@
  */
 
 require '../PHP/clases/AccesoDatos.php';
-require '../PHP/clases/Locales.php';
 require '../PHP/clases/usuario.php';
-require '../PHP/clases/informe.php';
 require '../vendor/autoload.php';
 /**
  * Step 2: Instantiate a Slim application
