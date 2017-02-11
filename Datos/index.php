@@ -10,6 +10,7 @@
 require '../PHP/clases/AccesoDatos.php';
 require '../PHP/clases/usuario.php';
 require '../PHP/clases/Locales.php';
+require '../PHP/clases/informe.php';
 require '../vendor/autoload.php';
 /**
  * Step 2: Instantiate a Slim application
@@ -136,6 +137,45 @@ $app->put('/locales',function($request){
 });
 
 
+$app->get('/informes[/]', function ($request, $response, $args) {
+	
+	$listado = informe::TraerTodosLosInformes();
+	return json_encode($listado);
+	var_dump($listado);
+   
+});
+
+$app->get('/informes/{id}', function ($request, $response, $args) {
+	
+	$user = informe::TraerUnInforme($args['id']);
+    return json_encode($user);
+	var_dump($user);
+});
+
+$app->delete('/informes/{id}', function ($request, $response, $args) {
+	
+	$listado=informe::BorrarInforme($args['id']);
+   $response->write(json_decode($listado)); 
+    return $response;
+});
+
+$app->post('/informes', function ($request,$args) {
+	echo "estoy en index alta php";
+	$datos=json_decode($request->getBody());
+
+	var_dump($datos);
+	informe::InsertarInforme($datos);
+});
+
+$app->put('/informes',function($request){
+	echo "estoy index modificar.php";
+	$uninforme=json_decode($request->getBody());
+	//$uninforme->id_informe=$id;
+	informe::ModificarInforme($uninforme);
+	
+	var_dump($uninforme);
+
+});
 
 
 $app->run();

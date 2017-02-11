@@ -76,6 +76,15 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
   })
 
  
+
+.state('grillaInforme', {
+    url: '/grillaInforme',
+    views: {
+      'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
+      'principal': {templateUrl: 'template/grillaInforme.html', controller: 'controlGrillaInforme' }      
+    }
+  })
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 });
@@ -653,7 +662,141 @@ app.controller('controlModificarLocal', function($scope, $http, $state, $auth, F
 });
 
 
+app.controller('controlGrillaInforme', function($scope, $http, $state, $auth, FactoryInforme) {
+
+  if($auth.isAuthenticated())
+  {
+    $scope.DatoTest="INFORMES";
+
+    $scope.esVisible={
+      admin:false,
+      user:false,
+      cliente:false
+    };
+
+
+    if($auth.getPayload().tipo=="administrador")
+      $scope.esVisible.admin=true;
+    if($auth.getPayload().tipo=="usuario")
+      $scope.esVisible.user=true;
+    if($auth.getPayload().tipo=="cliente")
+      $scope.esVisible.cliente=true;
+
+
+    FactoryInforme.mostrarNombre("otro").then(function(respuesta){
+
+     $scope.ListadoInformes=respuesta;
+ 
+   });
+    //$scope.Listadopersonas =factory.fu();
+    //$http.get('PHP/nexo.php', { params: {accion :"traer"}})
+      $scope.Borrar=function(id) {
+
+      console.log("borrar"+id);
+
+      $http.delete('Datos/informes/'+id)
+     .then(function(respuesta) {      
+             //aca se ejetuca si retorno sin errores        
+             console.log(respuesta.data);
+
+            $http.get('Datos/informes')
+            .then(function(respuesta) {       
+
+                   $scope.ListadoInformes = respuesta.data;
+                   console.log(respuesta.data);
+
+              },function errorCallback(response) {
+                   $scope.ListadoInformes= [];
+                  console.log( response);
+
+      });
+
+        },function errorCallback(response) {        
+            //aca se ejecuta cuando hay errores
+            console.log( response);           
+        });
+  }
+
+  }else{$state.go("login");}
+
+});
+
+
+
+// SERVICIOS
+
+app.service('cargadoDeFoto',function($http,FileUploader){
+    this.CargarFoto=function(nombrefoto,Uploader){
+        var direccion="imagenes/"+nombrefoto;  
+        $http.get(direccion,{responseType:"blob"})
+        .then(function (respuesta){
+            console.info("datos del cargar foto",respuesta);
+            var mimetype=respuesta.data.type;
+            var archivo=new File([respuesta.data],direccion,{type:mimetype});
+            var dummy= new FileUploader.FileItem(Uploader,{});
+            dummy._file=archivo;
+            dummy.file={};
+            dummy.file= new File([respuesta.data],nombrefoto,{type:mimetype});
+
+              Uploader.queue.push(dummy);
+         });
+    }
+});
+
+app.service('ServicioUsuario', function($http){
+  var listado;
+
+  this.retornarUsuarios = function(){
+
+       return $http.get('Datos/usuarios')
+                    .then(function(respuesta) 
+                    {     
+                      console.log(respuesta.data);
+                      return respuesta.data;
+                    });
+                  };
+
+                  //return listado;
+});
+
+
+app.service('ServicioLocal', function($http){ //ESTO ES PARA LOCALES
+  var listado;
+
+  this.retornarLocales = function(){
+
+       return $http.get('Datos/locales')
+                    .then(function(respuesta) 
+                    {     
+                      console.log(respuesta.data);
+                      return respuesta.data;
+                    });
+                  };
+
+                  //return listado;
+});
+
+app.service('ServicioInforme', function($http){
+  var listado;
+
+  this.retornarInformes = function(){
+
+       return $http.get('Datos/informes')
+                    .then(function(respuesta) 
+                    {     
+                      console.log(respuesta.data);
+                      return respuesta.data;
+                    });
+                  };
+
+                  //return listado;
+});
+
+
+
 // FACTORYS
+
+
 app.factory('FactoryUsuario', function(ServicioUsuario){
   var persona = {
    
@@ -691,57 +834,22 @@ app.factory('FactoryLocal', function(ServicioLocal){
 
 });
 
-// SERVICIOS
+app.factory('FactoryInforme', function(ServicioInforme){
 
-app.service('cargadoDeFoto',function($http,FileUploader){
-    this.CargarFoto=function(nombrefoto,Uploader){
-        var direccion="imagenes/"+nombrefoto;  
-        $http.get(direccion,{responseType:"blob"})
-        .then(function (respuesta){
-            console.info("datos del cargar foto",respuesta);
-            var mimetype=respuesta.data.type;
-            var archivo=new File([respuesta.data],direccion,{type:mimetype});
-            var dummy= new FileUploader.FileItem(Uploader,{});
-            dummy._file=archivo;
-            dummy.file={};
-            dummy.file= new File([respuesta.data],nombrefoto,{type:mimetype});
+  var informe = {
+   
+    mostrarNombre:function(dato){
+      
+     return ServicioInforme.retornarInformes().then(function(respuesta){
+       
+        return respuesta;
+      });
+    },
+    // mostrarapellido:function(){
+    //   console.log("soy otra funcion de factory");
+    // }
+}
+  return informe;
 
-              Uploader.queue.push(dummy);
-         });
-    }
 });
 
-
-
-app.service('ServicioUsuario', function($http){
-  var listado;
-
-  this.retornarUsuarios = function(){
-
-       return $http.get('Datos/usuarios')
-                    .then(function(respuesta) 
-                    {     
-                      console.log(respuesta.data);
-                      return respuesta.data;
-                    });
-                  };
-
-                  //return listado;
-});
-
-
-app.service('ServicioLocal', function($http){ //ESTO ES PARA LOCALES
-  var listado;
-
-  this.retornarLocales = function(){
-
-       return $http.get('Datos/locales')
-                    .then(function(respuesta) 
-                    {     
-                      console.log(respuesta.data);
-                      return respuesta.data;
-                    });
-                  };
-
-                  //return listado;
-});
