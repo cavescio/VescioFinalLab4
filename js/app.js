@@ -59,6 +59,22 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
     }
   })
 
+  .state('altaLocal', {
+    url: '/altaLocal',
+    views: {
+      'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
+      'principal': {templateUrl: 'template/altaLocal.html', controller: 'controlAltaLocal' }      
+    }
+  })
+
+  .state('modificarLocal', {
+      url: '/modificarLocal/{id}?:nombre:localidad:direccion:gerente',
+     views: {
+      'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
+      'principal': { templateUrl: 'template/altaLocal.html',controller: 'controlModificarLocal' }      
+    }
+  })
+
  
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
@@ -499,7 +515,142 @@ app.controller('controlGrillaLocal', function($scope, $http, $state, $auth, Fact
 });
 
 
+app.controller('controlAltaLocal', function($scope, $http ,$state,  $auth, FileUploader) {
 
+  if($auth.isAuthenticated())
+  {
+    $scope.DatoTest="ALTA ENCUESTA";
+
+    // $scope.uploader = new FileUploader({url: 'PHP/nexoLocal.php'});
+
+        $scope.esVisible={
+        admin:false,
+        user:false,
+        cliente:false
+        };
+
+
+    if($auth.getPayload().tipo=="administrador")
+      $scope.esVisible.admin=true;
+    if($auth.getPayload().tipo=="usuario")
+      $scope.esVisible.user=true;
+    if($auth.getPayload().tipo=="cliente")
+      $scope.esVisible.cliente=true;
+
+
+          $scope.local={
+            nombre:"Farmacity",
+            localidad:"Quilmes",
+            direccion:"Av Rivadavía 49",
+            gerente:"Andrea Bochi",
+          };
+
+          $scope.Guardar=function(){
+
+
+              ///////////////////SLIM/////////////
+              $http.post('Datos/locales',$scope.local)
+                          .then(function(respuesta) {       
+                               //aca se ejetuca si retorno sin errores        
+                               console.log(respuesta.data);
+                               $state.go("grillaLocal");
+
+                          },function errorCallback(response) {        
+                              //aca se ejecuta cuando hay errores
+                              console.log( response);           
+                          });
+
+              // $scope.uploader.onSuccessItem=function(item, response, status, headers)
+              // {
+              //alert($scope.persona.foto);
+                // $http.post('PHP/nexoLocal.php', { datos: {accion :"insertar",local:$scope.local}})
+                //   .then(function(respuesta) {       
+                //      //aca se ejetuca si retorno sin errores        
+                //    console.log(respuesta.data);
+                //    $state.go("encuestas");
+
+                // },function errorCallback(response) {        
+                //     //aca se ejecuta cuando hay errores
+                //     console.log( response);           
+                //   });
+              //console.info("Ya guardé el archivo.", item, response, status, headers);
+             //};
+
+         }
+
+  }else{$state.go("login");}
+
+});
+
+
+app.controller('controlModificarLocal', function($scope, $http, $state, $auth, FileUploader, $stateParams) {
+
+  if($auth.isAuthenticated())
+  {
+  $scope.local={};
+  $scope.DatoTest="MODIFICAR LOCAL";
+  $scope.uploader = new FileUploader({url: 'PHP/nexoLocal.php'});
+  $scope.uploader.queueLimit = 1;
+  $scope.local.id=$stateParams.id;
+  $scope.local.nombre=$stateParams.nombre;
+  $scope.local.localidad=$stateParams.localidad;
+  $scope.local.direccion=$stateParams.direccion;
+  $scope.local.gerente=$stateParams.gerente;
+
+
+  $scope.esVisible={
+      admin:false,
+      user:false,
+      cliente:false
+    }; 
+
+
+    if($auth.getPayload().tipo=="administrador")
+      $scope.esVisible.admin=true;
+    if($auth.getPayload().tipo=="usuario")
+      $scope.esVisible.user=true;
+    if($auth.getPayload().tipo=="cliente")
+      $scope.esVisible.cliente=true;
+
+  $scope.uploader.onSuccessItem=function(item, response, status, headers)
+  {
+    $http.post('PHP/nexoLocal.php', { datos: {accion :"modificar",local:$scope.local}})
+        .then(function(respuesta) 
+        {
+          //aca se ejetuca si retorno sin errores       
+          console.log(respuesta.data);
+          $state.go("grillaLocales");
+        },
+        function errorCallback(response)
+        {
+          //aca se ejecuta cuando hay errores
+          console.log( response);           
+        });
+    console.info("Ya guardé el archivo.", item, response, status, headers);
+  };
+
+  $scope.Guardar=function(local)
+  {
+
+    $http.put('Datos/locales',$scope.local)
+    .then(function(respuesta) {       
+    //aca se ejetuca si retorno sin errores        
+    console.log(respuesta.data);
+    $state.go("grillaLocal");
+
+    },function errorCallback(response) {        
+     //aca se ejecuta cuando hay errores
+    console.log( response);           
+    });
+    
+    }
+
+  }
+  else{
+    $state.go("login");
+  }
+  
+});
 
 
 // FACTORYS
