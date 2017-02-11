@@ -8,7 +8,9 @@
  */
 
 require '../PHP/clases/AccesoDatos.php';
+require '../PHP/clases/Locales.php';
 require '../PHP/clases/usuario.php';
+require '../PHP/clases/informe.php';
 require '../vendor/autoload.php';
 /**
  * Step 2: Instantiate a Slim application
@@ -49,10 +51,6 @@ $app->get('/hello[/{name}]', function ($request, $response, $args) {
     $response->write("Hello, " . $args['name']);
     return $response;
 })->setArgument('name', 'World!');
-
-
-
-
 
 
 $app->get('/usuarios[/]', function ($request, $response, $args) {

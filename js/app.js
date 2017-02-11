@@ -14,16 +14,22 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
   .state('menu', {
     views: {
       'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
-      'principal': { templateUrl: 'template/menu.html', controller: 'controlMenu' }      
+      'principal': { templateUrl: 'template/menu.html',controller: 'controlMenu' }      
     }
     ,url:'/menu'
   })
+ 
 
+  .state('login', {
+    url: '/login',
+    views: {
+      'principal': { templateUrl: 'template/login.html',controller: 'controlLogin' }
+    }
+  })
 
-  
  
   // if none of the above states are matched, use this as the fallback
-  //$urlRouterProvider.otherwise('/menu');
+  $urlRouterProvider.otherwise('/login');
 });
 
 
@@ -128,4 +134,123 @@ app.controller('controlHeader', function($scope, $http, $auth, $state) {
 });
 
 
-// });
+
+
+
+
+app.controller('controlLogin', function($scope, $http, $auth, $state) {
+  
+  $scope.DatoTest="INICIAR SESIÓN";
+
+  $scope.cargarCliente = function()
+  {
+    $scope.correo = "cliente@cliente.com";
+    $scope.nombre = "julia";
+    $scope.clave = "987";
+  };  
+  $scope.cargarUsuario = function()
+  {
+    $scope.correo = "user@user.com";
+    $scope.nombre = "roger";
+    $scope.clave = "123";
+  };  
+  $scope.cargarAdmin = function()
+  {
+    $scope.correo = "admin@admin.com";
+    $scope.nombre = "admin";
+    $scope.clave = "321";
+  };
+
+
+  if($auth.isAuthenticated())
+  {
+    $state.go("menu");
+  }
+  else
+  {
+    
+    $scope.Login=function()
+    {
+      $auth.login({correo:$scope.correo, nombre:$scope.nombre, clave:$scope.clave})
+      .then(function(respuesta)
+      {
+        console.log(respuesta);
+        if($auth.isAuthenticated())
+        {
+          console.info($auth.isAuthenticated(), $auth.getPayload());
+          $state.go("menu");
+        }
+        else
+        {
+          alert("No se encontró el usuario. Verifique los datos.");
+        }
+      });
+    };
+    $scope.CargarFormulario=function()
+    {
+      $state.go("altaUser");
+    };
+  }
+});
+
+
+
+
+app.factory('FactoryUsuario', function(ServicioUsuario){
+  var persona = {
+   
+    mostrarNombre:function(dato){
+      
+     return ServicioUsuario.retornarUsuarios().then(function(respuesta){
+        console.log("estoy en el app.factory");
+        return respuesta;
+      });
+    },
+    mostrarapellido:function(){
+     console.log("soy otra funcion de factory");
+    }
+}
+  return persona;
+
+});
+
+
+// SERVICIOS
+
+app.service('cargadoDeFoto',function($http,FileUploader){
+    this.CargarFoto=function(nombrefoto,Uploader){
+        var direccion="imagenes/"+nombrefoto;  
+        $http.get(direccion,{responseType:"blob"})
+        .then(function (respuesta){
+            console.info("datos del cargar foto",respuesta);
+            var mimetype=respuesta.data.type;
+            var archivo=new File([respuesta.data],direccion,{type:mimetype});
+            var dummy= new FileUploader.FileItem(Uploader,{});
+            dummy._file=archivo;
+            dummy.file={};
+            dummy.file= new File([respuesta.data],nombrefoto,{type:mimetype});
+
+              Uploader.queue.push(dummy);
+         });
+    }
+});
+
+
+
+app.service('ServicioUsuario', function($http){
+  var listado;
+
+  this.retornarUsuarios = function(){
+
+       return $http.get('Datos/usuarios')
+                    .then(function(respuesta) 
+                    {     
+                      console.log(respuesta.data);
+                      return respuesta.data;
+                    });
+                  };
+
+                  //return listado;
+});
+
+

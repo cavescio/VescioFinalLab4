@@ -5,7 +5,7 @@
 		{
 			try
 			{
-				return $conexion=new PDO("mysql:host=localhost;charset=utf8;dbname=lab4final", "root", "");
+				return $conexion=new PDO("mysql:host=localhost;charset=utf8;dbname=userandloc", "root", "");
 			}
 			catch(PDOException $ex)
 			{
