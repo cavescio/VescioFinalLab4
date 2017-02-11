@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mistery Shopper</title>
+	  
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="css/animacion.css">	
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+ 	<script SRC="bower_components/angular/angular.min.js" TYPE="text/javascript"></script>
+	<script SRC="bower_components/angular-ui-router/release/angular-ui-router.min.js" TYPE="text/javascript"></script>
+	
+	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
+  	<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  	<script src="bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
+  	<script SRC="bower_components/satellizer/dist/satellizer.min.js" TYPE="text/javascript"></script>
+  	<script SRC="js/app.js" TYPE="text/javascript"></script>
+  	<script type="text/javascript" src="js/directivas/ngThumb.js"></script>
+	
+</head>
+<body ng-app="Mistery">
+	<!--?php		
+		require_once"partes/barraDeMenu.php";
+	 ?-->
+    <div ui-view="header"></div>
+	
+	<div ui-view="principal"></div>
+	
+</body>
+</html>
