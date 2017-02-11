@@ -9,6 +9,7 @@
 
 require '../PHP/clases/AccesoDatos.php';
 require '../PHP/clases/usuario.php';
+require '../PHP/clases/Locales.php';
 require '../vendor/autoload.php';
 /**
  * Step 2: Instantiate a Slim application
@@ -90,5 +91,51 @@ $app->put('/usuarios',function($request){
 	var_dump($unusuario);
 
 });
+
+
+$app->get('/locales[/]', function ($request, $response, $args) {
+	
+	$listado = Locales::TraerTodosLosLocales();
+	return json_encode($listado);
+	var_dump($listado);
+});
+
+$app->get('/locales/{id}', function ($request, $response, $args) {
+	
+	$unLocal = Locales::TraerUnLocal($args['id']);
+	return json_encode($unLocal);
+	var_dump($unLocal);
+});
+
+
+$app->delete('/locales/{id}', function ($request, $response, $args) {
+	
+	$listado=Locales::BorrarLocal($args['id']);
+   $response->write(json_decode($listado)); 
+    return $response;
+});
+
+$app->post('/locales', function ($request,$args) {
+
+	echo "estoy en index alta php";
+
+	$datos=json_decode($request->getBody());
+	var_dump($datos);
+	Locales::InsertarLocal($datos);
+	
+});
+
+$app->put('/locales',function($request){
+	echo "estoy index modificar.php";
+	$unlocal=json_decode($request->getBody());
+	//$unUsuario->id_usuario=$id;
+	Locales::ModificarLocal($unlocal);
+	
+	var_dump($unlocal);
+
+});
+
+
+
 
 $app->run();

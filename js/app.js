@@ -51,6 +51,14 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
     }
   })
 
+  .state('grillaLocal', {
+    url: '/grillaLocal',
+    views: {
+      'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
+      'principal': { templateUrl: 'template/grillaLocales.html',controller: 'controlGrillaLocal' }      
+    }
+  })
+
  
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
@@ -417,6 +425,78 @@ app.controller('controlModificacion', function($scope, $http, $state, $statePara
 });
 
 
+app.controller('controlGrillaLocal', function($scope, $http, $state, $auth, FactoryLocal) {
+
+  if($auth.isAuthenticated())
+  {
+    $scope.DatoTest="GRILLA LOCALES";
+
+    //PARA HACER VISIBLES LOS BOTONES DE ACUERDO AL TIPO
+    $scope.esVisible={
+      adminClient: false,
+      admin: false,
+      cliente: false,
+      user: false
+    }; //PARA EL NG-IF
+
+
+    if($auth.getPayload().tipo=="administrador" || $auth.getPayload().tipo=="cliente")
+    {
+      console.info("estoy en if, tipo: " + $auth.getPayload().tipo);
+      $scope.esVisible.adminClient = true;
+
+      if ($auth.getPayload().tipo=="administrador") 
+      {
+        $scope.esVisible.admin=true;
+      }
+      else
+        $scope.esVisible.cliente=true;
+    }
+    else
+    {
+      console.info("estoy en else, tipo: " + $auth.getPayload().tipo);
+      $scope.esVisible.user=true;
+    }
+
+
+    FactoryLocal.mostrarNombre("otro").then(function(respuesta){
+
+     $scope.ListadoLocales=respuesta;
+ 
+   });
+    //$scope.Listadopersonas =factory.fu();
+    //$http.get('PHP/nexo.php', { params: {accion :"traer"}})
+      $scope.Borrar=function(id) {
+
+      console.log("borrar"+id);
+
+      $http.delete('Datos/locales/'+id)
+     .then(function(respuesta) {      
+             //aca se ejetuca si retorno sin errores        
+             console.log(respuesta.data);
+
+            $http.get('Datos/locales')
+            .then(function(respuesta) {       
+
+                   $scope.ListadoLocales = respuesta.data;
+                   console.log(respuesta.data);
+
+              },function errorCallback(response) {
+                   $scope.ListadoLocales= [];
+                  console.log( response);
+
+      });
+
+        },function errorCallback(response) {        
+            //aca se ejecuta cuando hay errores
+            console.log( response);           
+        })
+
+  }
+
+  }else{$state.go("login");}
+
+});
 
 
 
@@ -441,6 +521,24 @@ app.factory('FactoryUsuario', function(ServicioUsuario){
 
 });
 
+app.factory('FactoryLocal', function(ServicioLocal){
+
+  var local = {
+   
+    mostrarNombre:function(dato){
+      
+     return ServicioLocal.retornarLocales().then(function(respuesta){
+       
+        return respuesta;
+      });
+    },
+    // mostrarapellido:function(){
+    //   console.log("soy otra funcion de factory");
+    // }
+}
+  return local;
+
+});
 
 // SERVICIOS
 
@@ -481,3 +579,18 @@ app.service('ServicioUsuario', function($http){
 });
 
 
+app.service('ServicioLocal', function($http){ //ESTO ES PARA LOCALES
+  var listado;
+
+  this.retornarLocales = function(){
+
+       return $http.get('Datos/locales')
+                    .then(function(respuesta) 
+                    {     
+                      console.log(respuesta.data);
+                      return respuesta.data;
+                    });
+                  };
+
+                  //return listado;
+});
