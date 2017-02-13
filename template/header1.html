@@ -1,0 +1,87 @@
+ <!-- COMIENZO JUMBOTRON -->
+<section class="jumbotron">
+	<div class="container">
+		<h1 class="titulo-blog"><b>Mistery</b> Shopper</h1>
+		<p>TP Final Laboratorio IV 2016</p>
+
+		<!-- <li class="nav navbar-nav navbar-right">
+		    <a ui-sref="perfil">{{usuario.nombre}} &nbsp;<img  class="fotoGrilla" ng-src="imagenes/{{usuario.foto}}" alt="imagen"></a>
+		</li> -->
+
+
+	</div>
+</section>
+<!-- FIN JUMBOTRON -->
+
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegacion-ms">
+				<span class="sr-only">Desplegar / Ocultar Menu</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="#" class="navbar-brand">MS</a>
+		</div>
+
+		<!-- COMIENZO MENU -->
+		<div class="collapse navbar-collapse" id="navegacion-ms">
+			<ul class="nav navbar-nav">
+				<li><a ui-sref="menu"><span class="glyphicon glyphicon-home"></span></a></li>
+				
+				<!-- <li class="dropdown" role="menu">
+					<a href="#" "uib-dropdown-toggle" data-toggle="dropdown" role="button">
+						Negocios <span class="caret"></span>
+					</a>
+					<ul "dropdown-menu">
+						<li><a ui-sref="grilla">Grilla</a></li>
+						<li><a ui-sref="alta">Alta</a></li>
+					</ul>
+				</li> -->
+				<li uib-dropdown>
+					<a uib-dropdown-toggle><b>USUARIOS</b><span class="caret"></span></a>
+					<ul uib-dropdown-menu>
+						<li><a ui-sref="grillaUsuario">GRILLA</a></li>
+						<li><a ui-sref="altaUsuario">Agregar Usuario</a></li>
+						<li><a ui-sref="modificarUsuario">Modificar Usuario</a></li>
+					</ul>
+				</li>
+				<li uib-dropdown>
+					<a uib-dropdown-toggle>Locales<span class="caret"></span></a>
+					<ul uib-dropdown-menu>
+						<li><a ui-sref="grillaLocal">Grilla</a></li>
+						<li><a ui-sref="altaLocal">Agregar local</a></li>
+						<li><a ui-sref="modificarLocal">Modificar local</a></li>
+					</ul>
+				</li>
+<!-- 				<li uib-dropdown>
+					<a uib-dropdown-toggle>Informes<span class="caret"></span></a>
+					<ul uib-dropdown-menu>
+						<li><a ui-sref="grillaInformes">Grilla</a></li>						
+					</ul>
+				</li> -->
+				<li><a ui-sref="grillaInforme">Grilla Informes</a></li>
+				<!--<li><DirectivaDos><label>usuario: {{nombreUs}}</label><DirectivaDos></li>-->
+
+				<li>
+		    		<a ui-sref="perfil">{{usuario.nombre}} &nbsp;<img  class="fotoGrilla" ng-src="imagenes/{{usuario.foto}}" alt="imagen"></a>
+		    	</li>
+
+
+			<!-- 	<li><a ui-sref="altaUser">Alta Usuarios</a></li>
+				<li><a ui-sref="altaInforme">Alta Informes</a></li>
+				<li><a ui-sref="grilla">Grilla Negocios</a></li>
+				<li><a ui-sref="grillaUser">Grilla Usuarios</a></li>
+				<li><a ui-sref="grillaInformes">Grilla Informes</a></li> -->
+				<!--<li></li>
+				<li></li>
+				<li><a ui-sref="">Usuario: {{usuario.nombre}}</a></li>-->
+
+
+				<!-- <li class="nav navbar-nav navbar-right">
+		         		<a ui-sref="perfil">Bienvenido: {{usuario.nombre}} &nbsp;<img  class="fotoGrilla" ng-src="imagenes/{{usuario.foto}}" alt="imagen"></a>
+		         </li> -->
+
+			</ul>
+</div>							
