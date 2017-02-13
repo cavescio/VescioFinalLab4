@@ -1,4 +1,4 @@
-var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload', 'satellizer'])
+var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload', 'satellizer', 'ui.bootstrap'])
 
 
 
