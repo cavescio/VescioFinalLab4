@@ -151,4 +151,10 @@ input[type="text"] {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     background-color: #222222;
+
+}
+
+.dropdown-menu li>a:hover{
+  background:#222222;
+  color: #fff;
 }
