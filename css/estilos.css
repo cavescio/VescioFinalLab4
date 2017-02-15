@@ -92,3 +92,42 @@ input[type="text"] {
   max-width: 200px;
   max-height: 200px;
 }
+
+
+/* ACÁ VAN ESTILOS DE TABLA*/
+
+      .row{
+        margin-top:40px;
+        padding: 0 10px;
+    }
+    .clickable{
+        cursor: pointer;   
+    }
+
+    .panel-heading{
+      background: #000;
+    }
+
+    .panel-heading div {
+      margin-top: -18px;
+      font-size: 15px;
+    }
+    .panel-heading div span{
+      margin-left:5px;
+    }
+    .panel-body{
+      display: none;
+    }
+
+    .panel-primary>.panel-heading {
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+}
+
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: #fff;
+}
