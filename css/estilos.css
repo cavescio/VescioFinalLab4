@@ -1,49 +1,80 @@
+body, html{
+     height: 100%;
+ 	background-repeat: no-repeat;
+ 	/*background-color: #d3d3d3;*/
+    background-color: #fff;
+ 	font-family: 'Open Sans', sans-serif;
+}
+
+.main{
+ 	margin-top: 70px;
+}
+
+h1.title { 
+	font-size: 50px;
+	font-family: 'Passion One', cursive; 
+	font-weight: 400; 
+}
+
+hr{
+	width: 10%;
+	color: #fff;
+}
+
+.form-group{
+	margin-bottom: 15px;
+}
+
+label{
+	margin-bottom: 15px;
+}
+
+input,
+input::-webkit-input-placeholder {
+    font-size: 11px;
+    padding-top: 3px;
+}
+
+.main-login{
+ 	background-color: #fff;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+}
+
+.main-center{
+ 	margin-top: 30px;
+ 	margin: 0 auto;
+ 	max-width: 330px;
+    padding: 40px 40px;
+
+}
+
+.login-button{
+	margin-top: 5px;
+}
+
+.login-register{
+	font-size: 11px;
+	text-align: center;
+}
+
 .footer {
-	background-color: #000;
+    background-color: #000;
     height: 150px;
     color: white;
 }
 
 .jumbotron {
-	background-color: #000;
-	color: white;
-	margin-bottom: 0;
+    background-color: #000;
+    color: white;
+    margin-bottom: 0;
 }
-
-/*.CajaInicio {
-	text-align: center;
-}*/
-
-body {
-    font-family: 'Open Sans', sans-serif;
-    color: black;
-    /*background: url(../images/bg.jpg) no-repeat #FFF;*/
-    background: #F5F5F5;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: 0px 0px;
-}
-
-.error {
-  border-color: red;
-}
-
-.warning {
-  border-color: yellow;
-}
-
-.input-group-addon {
-    /*min-width:300px; if you want width please write here */
-    /*width: 120px;*/
-    min-width: 150px;
-}
-
-/*input[type="text"] {
-    width: 300px;
-    padding-left: 20px;
-}*/
 
 th, td {
     text-align: center;
@@ -61,9 +92,3 @@ input[type="text"] {
   max-width: 200px;
   max-height: 200px;
 }
-
- /*.btn{
-      box-shadow: 1px 2px 5px #000000;
-      background-color: #222222;
-      border: none;   
-  }*/

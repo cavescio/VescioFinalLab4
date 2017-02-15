@@ -1,0 +1,69 @@
+.footer {
+	background-color: #000;
+    height: 150px;
+    color: white;
+}
+
+.jumbotron {
+	background-color: #000;
+	color: white;
+	margin-bottom: 0;
+}
+
+/*.CajaInicio {
+	text-align: center;
+}*/
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+    /*background: url(../images/bg.jpg) no-repeat #FFF;*/
+    background: #F5F5F5;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: 0px 0px;
+}
+
+.error {
+  border-color: red;
+}
+
+.warning {
+  border-color: yellow;
+}
+
+.input-group-addon {
+    /*min-width:300px; if you want width please write here */
+    /*width: 120px;*/
+    min-width: 150px;
+}
+
+/*input[type="text"] {
+    width: 300px;
+    padding-left: 20px;
+}*/
+
+th, td {
+    text-align: center;
+}
+
+input[type="text"] {
+    width:300px;
+}
+
+.fotoGrilla {
+  width: 40px;
+  height: 40px;
+}
+.fotoform {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+ /*.btn{
+      box-shadow: 1px 2px 5px #000000;
+      background-color: #222222;
+      border: none;   
+  }*/
