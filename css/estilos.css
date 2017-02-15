@@ -158,3 +158,12 @@ input[type="text"] {
   background:#222222;
   color: #fff;
 }
+
+
+/* PARA QUE APAREZCA EL MAPA */
+#map { 
+    height: 500px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid silver;
+}

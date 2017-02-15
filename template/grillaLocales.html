@@ -45,9 +45,9 @@
 
 				  				<td ng-if="esVisible.user"><button class='btn btn-primary' name='formulario' ui-sref="encuesta({id:local.id, nombre:local.nombre, localidad:local.localidad, direccion:local.direccion})">   <span class='glyphicon glyphicon-edit'>&nbsp;</span>Encuesta</button></td>
 
-				  				<td ng-if="esVisible.adminClient" class="centrar"><button class='btn btn-warning' name='Modificar' ui-sref="modificarLocal({id:local.id, nombre:local.nombre, localidad:local.localidad, direccion:local.direccion, gerente:local.gerente})"><span class='glyphicon glyphicon-edit'>&nbsp;</span>Modificar</button></td>
+				  				<td ng-if="esVisible.adminClient" class="centrar"><button class='btn btn-warning' name='Modificar' ui-sref="modificarLocal({id:local.id, nombre:local.nombre, localidad:local.localidad, direccion:local.direccion, gerente:local.gerente})"><span class='glyphicon glyphicon-edit'><!-- &nbsp; --></span><!-- Modificar --></button></td>
 
-				  				<td ng-if="esVisible.admin" class="centrar"><button class='btn btn-danger' name='Borrar' ng-click="Borrar(local.id)">   <span class='glyphicon glyphicon-remove-circle'>&nbsp;</span>Borrar</button></td>
+				  				<td ng-if="esVisible.admin" class="centrar"><button class='btn btn-danger' name='Borrar' ng-click="Borrar(local.id)">   <span class='glyphicon glyphicon-remove-circle'><!-- &nbsp; --></span><!-- Borrar --></button></td>
 							</tr>
 						</tbody>
 					</table>
