@@ -15,7 +15,7 @@
 
 
  <!-- <div class="navbar navbar-inverse avbar-fixed-top"> -->
- <div class="navbar navbar-inverse navbar-static-top">
+<!--  <div class="navbar navbar-inverse navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -51,10 +51,60 @@
                         
                     
                     <ul class="nav navbar-nav navbar-right">
-                        <a  class="animated bounceInRight" ui-sref="perfil">Bienvenido: {{usuario.nombre}} &nbsp;<img  class="fotoGrilla" ng-src="imagenes/{{usuario.foto}}" alt="imagen"></a>
+                        <li><a href="#"><img ng-src="imagenes/{{usuario.foto}}" class="avatar">&nbsp;<span class="header-username">{{usuario.nombre}}</span></a></li>
+                        <li><a>Log off</a></li>
                     </ul>
 
                 </div>
 
             </div>
+        </div> -->
+        <div class="navbar navbar-inverse navbar-static-top masthead navbar-top " role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-nav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Mistery Shopper</a>
         </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse" id="top-nav">
+            <ul class="nav navbar-nav">
+
+                <li uib-dropdown>
+                            <a uib-dropdown-toggle>Usuarios<span class="caret"></span></a>
+                            <ul uib-dropdown-menu>
+                                <li><a ui-sref="grillaUsuario">Grilla</a></li>
+                                <li><a ui-sref="altaUsuario">Agregar Usuario</a></li>
+                                <li><a ui-sref="modificarUsuario">Modificar Usuario</a></li>
+                            </ul>
+                        <li uib-dropdown>
+                            <a uib-dropdown-toggle>Locales<span class="caret"></span></a>
+                            <ul uib-dropdown-menu>
+                                <li><a ui-sref="grillaLocal">Grilla</a></li>
+                                <li><a ui-sref="altaLocal">Agregar local</a></li>
+                                <li><a ui-sref="modificarLocal">Modificar local</a></li>
+                            </ul>
+                        <li><a ui-sref="grillaInforme">Grilla Informes</a></li>
+                    
+                </li>
+
+                <!-- <li ><a href="#"><i class="fa fa-home"></i> Home</a></li> -->
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <!-- <li  class="active"><a href="#"><i class="fa fa-suitcase"></i> Projects</a></li> -->
+                <li>
+                    <a href="#" class="profile-image" >
+                    <img src="imagenes/{{usuario.foto}}" class="img-circle" height="25px" width="25px"> {{usuario.nombre}} <b></b></a>
+                    <!--<ul class="dropdown-menu">
+                         <li><a href="#"><i class="fa fa-cog"></i> Account</a></li>
+                                                <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-sign-out"></i> Sign-out</a></li> 
+                    </ul>-->
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>  
