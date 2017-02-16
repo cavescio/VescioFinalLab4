@@ -1,8 +1,10 @@
 <?php 
-require "informe.php"; 
+//require "informe.php"; 
+require "../../../informe.php";
 $row = informe::TraerTodosLosInformes(); 
-var_dump($row); $totalinforme = count($row); 
-var_dump($totalinforme);  
+//var_dump($row); 
+$totalinforme = count($row); 
+//var_dump($totalinforme);  
 ?>
 
 <!DOCTYPE HTML>
@@ -35,17 +37,15 @@ $(function () {
 
     $('#container').highcharts({
         title: {
-            text: 'Porcentajes de locales',
+            text: 'Gráfico lineal',
             x: -20 //center
         },
         subtitle: {
-            text: 'los porcentajes',
+            text: 'Locales con mejor puntaje',
             x: -20
         },
         xAxis: {
-            categories: [<?php                
-             echo ($dataNames);             
-             ?> ]
+            categories: [ <?php echo ($dataNames); ?> ]
         },
         yAxis: {
             title: {
@@ -68,9 +68,7 @@ $(function () {
         },
         series: [{
             name: 'Nombre',
-            data: [<?php
-                            echo($data);
-                ?>]
+            data: [ <?php echo($data); ?> ]
          
         }]
     });
@@ -82,6 +80,8 @@ $(function () {
 <script src="../../js/modules/exporting.js"></script>
 
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<br/><center><a href="../column-basic/index.php">Gráfico de barras</center>
 
 	</body>
 </html>
