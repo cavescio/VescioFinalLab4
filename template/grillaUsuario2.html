@@ -1,0 +1,127 @@
+  <!-- <div class="container">
+	  	<div class="page-header">
+	  		<center><h1>{{DatoTest}}</h1> </center>     
+	  	</div>	           
+	  	<div class="CajaInicio animated pulse">
+	  		<h1>Listado de usuarios</h1>
+
+	  		 <input type="search" placeholder="Buscar Usuario..." ng-model="mifiltro" class="buscar"></input>
+	  		<table class='table table-hover table-responsive' id="listaUsuarios">
+	  			<thead>
+	  				<tr>
+
+						<th>  Correo     </th>
+						<th>  Nombre     </th>
+						<th>  Clave     </th>
+						<th>  Tipo       </th>
+	  					<th>  Foto   </th>				
+						<th>  BORRAR     </th>
+	  					<th>  MODIFICAR     </th>
+
+	  				</tr> 
+	  			</thead>
+	  			<tr ng-repeat="usuario in ListadoUsuarios | filter:mifiltro as resultado">
+
+
+
+	  				<td>{{usuario.correo}}</td>
+	  				<td>{{usuario.nombre}}</td>
+	  				<td>{{usuario.clave}}</td>
+	  				<td>{{usuario.tipo}}</td>
+
+
+	  				<td><img  class='fotoGrilla' ng-src="imagenes/{{usuario.foto}}" ></td>
+
+	  				<td><button class='btn btn-danger' name='Borrar' ng-click="Borrar(usuario)">   <span class='glyphicon glyphicon-remove-circle'>&nbsp;</span>Borrar</button></td>
+
+	  				<td><button class='btn btn-warning' name='Modificar' ui-sref="modificar({id:usuario.id, correo:usuario.correo, nombre:usuario.nombre , clave:usuario.clave, tipo:usuario.tipo, foto:usuario.foto})"><span class='glyphicon glyphicon-edit'>&nbsp;</span>Modificar</button></td>
+
+	  			</tr>
+
+
+	  			<tr ng-if="resultado.length == 0">
+
+	  				<td></td>							
+	  				<td>No existen usuarios con esos datos..</td>
+	  				<td></td>
+	  				<td></td>
+	  				<td></td>										
+	  				<td></td>
+
+	  			</tr>
+	  		</table>
+	  	</div>				
+	  </div>
+	</div> -->
+
+
+	<div class="container">
+	<div class="row">
+		
+        
+        <div class="col-md-12">
+        
+       
+        <div class="table-responsive">
+
+         <!-- <input type="search" placeholder="Buscar Usuario..." ng-model="mifiltro" class="buscar"></input> -->
+	  	 <input class="form-control" id="system-search" name="q" ng-model="mifiltro" placeholder="Search for" required>	
+
+                
+        <table id="listaUsuarios" class="table table-bordred table-striped">
+
+
+                   
+                   <thead>
+                   
+                    <th>Correo</th>
+                    <th>Nombre</th>
+                     <th>Clave</th>
+                     <th>Tipo</th>
+                     <th>Foto</th>
+                      <th>Modificar</th>
+                      
+                       <th>Eliminar</th>
+                   </thead>
+    <tbody>
+    	
+    	<tr ng-repeat="usuario in ListadoUsuarios | filter:mifiltro as resultado">
+    
+    
+    
+    <td>{{usuario.correo}}</td>
+	<td>{{usuario.nombre}}</td>
+	<td>{{usuario.clave}}</td>
+	<td>{{usuario.tipo}}</td>
+	<td><img  class='fotoGrilla' ng-src="imagenes/{{usuario.foto}}" ></td>
+
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+    
+    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" name='Borrar' ng-click="Borrar(usuario)"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+
+	
+    </tr>
+    
+ 
+    </tbody>
+
+    <tr ng-if="resultado.length == 0">
+
+	  	<td></td>							
+	  	<td>No existen usuarios con esos datos..</td>
+	  	<td></td>
+	  	<td></td>
+	  	<td></td>										
+	  	<td></td>
+	</tr>
+        
+</table>
+
+
+
+        </div>
+    
+  </div>
+     
+    </div>
+    

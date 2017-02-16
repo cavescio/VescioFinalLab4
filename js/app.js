@@ -43,7 +43,7 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
     }
   })
 
-  .state('modificarUsuario', {
+  .state('modificar', {
      url: '/modificar/{id}?:correo:nombre:clave:tipo:foto',
      views: {
       'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
