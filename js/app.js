@@ -94,6 +94,15 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
     }
   })
 
+
+  .state('reporte', {
+    url: '/reporte',
+    views: {
+      'principal': {templateUrl: 'template/menuDos.html', controller: 'controlReporte' },
+      'header': {templateUrl: 'template/header.html', controller: 'controlHeader'}
+    }
+  })
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 });
@@ -745,6 +754,51 @@ app.controller('controlMapa', function($scope, $auth, Map){
     $state.go("login");
   }
 
+});
+
+
+// CONTROL REPORTES
+app.controller('controlReporte', function($scope, $http, $auth, $state, FactoryUsuario)
+{
+  if($auth.isAuthenticated())
+  {
+    // console.info($auth.isAuthenticated(), $auth.getPayload());
+    // $scope.DatoTest="**Menu**";
+    // $scope.usuario=$auth.getPayload();
+    // $scope.nombreUs=$auth.getPayload().nombre;
+    // console.log("Usuario Logueado: "+$scope.nombreUs);
+
+    $scope.GenerarGrafico=function()
+    {
+      // window.open('http://localhost:8080/VescioFinalLab4/PHP/clases/ejemplo2.php');
+        // window.open('http://localhost:8080/VescioFinalLab4/PHP/clases/Highcharts-4.1.5/examples/pyramid/index.php');
+        window.open('http://localhost:8080/VescioFinalLab4/PHP/clases/Highcharts-4.1.5/examples/line-basic/index.php');
+    };
+
+    $scope.GenerarPdfsu=function()
+    {
+      window.open('http://localhost:8080/tigerush/PHP/plantillapdf2.php');
+    };
+    $scope.GenerarExcelsu=function()
+    {//OK
+      window.open('http://localhost:8080/tigerush/PHP/rep_excel.php');
+    };
+
+    $scope.GenerarPdfin=function()
+    {//OK
+      window.open('http://localhost:8080/tigerush/PHP/plantillapdf.php');
+    };
+    $scope.GenerarExcelin=function()
+    {
+      window.open('http://localhost:8080/tigerush/PHP/rep_excel2.php');
+    };
+
+
+  }
+  else
+  {
+    $state.go("login");
+  }
 });
 
 
