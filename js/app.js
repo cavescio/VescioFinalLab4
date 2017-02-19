@@ -16,9 +16,17 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
     url: '/menu',
     views: {
       'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
-      'principal': { templateUrl: 'template/menu1.html',controller: 'controlMenu' }      
+      'principal': { templateUrl: 'template/menuCarousel.html',controller: 'controlMenu' }      
     }    
-  }) 
+  })
+
+  .state('carousel', {
+    url: '/carousel',
+    views: {
+      'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
+      'principal': { templateUrl: 'template/menuCarousel.html',controller: 'ctrl' }      
+    }    
+  })  
 
   .state('login', {
     url: '/login',
@@ -102,6 +110,18 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
       'header': {templateUrl: 'template/header.html', controller: 'controlHeader'}
     }
   })
+
+
+    .state('encuesta', {
+      url: '/encuesta/{id}?:nombre:localidad:direccion',
+     views: {
+       'principal': { templateUrl: 'template/encuesta.html',controller: 'controlEncuesta' },
+     // 'principal': { templateUrl: 'template/altaLocal.html',controller: 'controlEncuesta' },
+      'header': {templateUrl: 'template/header.html', controller: 'controlHeader'}
+    }
+  })
+
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
@@ -802,6 +822,165 @@ app.controller('controlReporte', function($scope, $http, $auth, $state, FactoryU
 });
 
 
+app.controller('controlEncuesta', function($scope, $http ,$state,  $auth, FileUploader, $stateParams) {
+
+  if($auth.isAuthenticated())
+  {
+
+    $scope.DatoTest="COMPLETANDO ENCUESTA";
+
+    $scope.DatoTest="INFORMES";
+
+    $scope.esVisible={
+      admin:false,
+      user:false,
+      cliente:false
+    };
+
+
+    if($auth.getPayload().tipo=="administrador")
+      $scope.esVisible.admin=true;
+    if($auth.getPayload().tipo=="usuario")
+      $scope.esVisible.user=true;
+    if($auth.getPayload().tipo=="cliente")
+      $scope.esVisible.cliente=true;
+
+
+    $scope.uploader = new FileUploader({url: 'PHP/nexoLocal.php'});
+    $scope.uploader.queueLimit = 1;
+
+    $scope.datos={
+      id: $stateParams.id
+    }
+    
+
+    $scope.local={};
+    //$scope.local.id=$stateParams.id;
+    $scope.local.nombre=$stateParams.nombre;
+    $scope.local.localidad=$stateParams.localidad;
+    $scope.local.direccion=$stateParams.direccion;
+    $scope.local.empleado=$auth.getPayload().nombre;
+    $scope.local.puno=null;
+    $scope.local.pdos=null;
+    $scope.local.ptres=null;
+    $scope.local.pcuatro=null;
+    $scope.local.porcentaje=null;
+
+    //fecha actual
+    $scope.local.fecha=new Date();
+
+    var dd = $scope.local.fecha.getDate();
+    var mm = $scope.local.fecha.getMonth()+1; //Enero es 0!
+    
+    var yyyy = $scope.local.fecha.getFullYear();
+    
+    $scope.local.fecha= dd+'/'+mm+'/'+yyyy;
+
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+
+        // var yyyy = today.getFullYear();
+        // if(dd<10){
+        //     dd='0'+dd
+        // } 
+        // if(mm<10){
+        //     mm='0'+mm
+        // } 
+        // var today = dd+'/'+mm+'/'+yyyy;
+        // document.getElementById("DATE").value = today;
+
+
+
+          //tengo que traer los datos
+
+          $scope.Guardar=function(){
+
+            console.log("borrar :" + $scope.datos.id);
+
+            if ($scope.local.puno!=null && $scope.local.pdos!=null && $scope.local.ptres!=null && $scope.local.pcuatro!=null && $scope.local.empleado!=null) 
+            {
+
+              if (confirm("¿Seguro que desea guardar los datos ingresados?")) 
+              {
+
+                    $scope.cantidad = 4;
+                    $scope.incremento = 0;
+
+                    if($scope.local.puno == "si")
+                      $scope.incremento++;
+                    if($scope.local.pdos == "si")
+                      $scope.incremento++;
+                    if($scope.local.ptres == "si")
+                      $scope.incremento++;
+                    if($scope.local.pcuatro == "si")
+                      $scope.incremento++;
+
+                    $scope.local.porcentaje = ($scope.incremento/$scope.cantidad)*100;
+
+                    ////////////////////////////////////
+                    ///////////////////SLIM/////////////
+                    ///////////////////////////////////
+
+                    $http.post('Datos/informes',$scope.local)
+                                .then(function(respuesta) {       
+                                     //aca se ejetuca si retorno sin errores        
+                                     console.log(respuesta.data);
+                                     $state.go("grillaInforme");
+
+                                },function errorCallback(response) {        
+                                    //aca se ejecuta cuando hay errores
+                                    console.log( response);           
+                                });
+
+
+
+                  $http.delete('Datos/locales/'+ $scope.datos.id)
+                      .then(function(respuesta) {      
+                      //aca se ejetuca si retorno sin errores        
+                      console.log(respuesta.data);
+
+                  },function errorCallback(response) {        
+                    //aca se ejecuta cuando hay errores
+                     console.log( response);           
+                  });
+
+              }
+
+            }else
+            alert("Para guardar hay que completar todos los campos");
+
+            
+        } // end function guardar
+
+  }
+
+  else{$state.go("login");}
+
+});
+
+
+
+
+
+
+// CONTROLLER CAROUSEL
+app.controller('ctrl', function($scope) {
+   $scope.links =[
+     { src:"img/img1.jpg", alt:"", caption:""},
+     { src:"img/img2.jpg", alt:"", caption:""},
+     { src:"img/img3.jpg", alt:"", caption:""},
+  ];
+});
+
+
+
+
+
+
+
+
+
 
 // SERVICIOS
 
@@ -1035,6 +1214,7 @@ app.service('Map', function($q, FileUploader, $stateParams) {
 
 
 // FACTORYS
+
 
 
 app.factory('FactoryUsuario', function(ServicioUsuario){

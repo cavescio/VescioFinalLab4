@@ -1,0 +1,64 @@
+<div class="container">
+			<div class="row main">
+				<!-- <div class="panel-heading">
+	               <div class="panel-title text-center">
+	               		<h1 class="title">Mistery Shopper</h1>
+	               		<hr />
+	               	</div>
+	            </div>  -->
+				<div class="main-login main-center">
+					<form class="form-horizontal" method="post" action="#">
+						
+						<div class="form-group">
+							<label for="email" class="cols-sm-2 control-label">Correo Electrónico</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="email" id="txtMail" ng-model="correo" placeholder="Ingrese su correo electrónico"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="username" class="cols-sm-2 control-label">Usuario</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="username" id="txtUser" ng-model="nombre" placeholder="Ingrese su usuario"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="password" class="cols-sm-2 control-label">Contraseña</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="password" id="txtPass" ng-model="clave" placeholder="Ingrese su contraseña"/>
+								</div>
+							</div>
+						</div>
+
+
+
+						<div class="form-group ">
+							<button type="button" class="btn btn-primary btn-lg btn-block login-button" name="rellenarAdmin" ng-click="cargarAdmin()">Cargar Administrador</button>
+						</div>
+						
+						<div class="form-group ">
+							<button type="button" class="btn btn-primary btn-lg btn-block login-button" name="rellenarUsuario" ng-click="cargarUsuario()">Cargar Usuario</button>
+						</div>
+
+						<div class="form-group ">
+							<button type="button" class="btn btn-primary btn-lg btn-block login-button" name="rellenarCliente" ng-click="cargarCliente()">Cargar Cliente</button>
+						</div>
+
+						
+						<div class="form-group ">
+							<button type="button" class="btn btn-primary btn-lg btn-block login-button" name="guardar" ng-click="Login()">Log In</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
