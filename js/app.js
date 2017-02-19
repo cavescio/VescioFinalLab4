@@ -16,7 +16,7 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
     url: '/menu',
     views: {
       'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
-      'principal': { templateUrl: 'template/menu.html',controller: 'controlMenu' }      
+      'principal': { templateUrl: 'template/menu1.html',controller: 'controlMenu' }      
     }    
   }) 
 
