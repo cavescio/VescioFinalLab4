@@ -434,7 +434,7 @@ app.controller('controlModificacion', function($scope, $http, $state, $statePara
       $scope.usuario={};
   $scope.DatoTest="MODIFICAR DATOS";
   // $scope.uploader = new FileUploader({url: 'Datos/index.php'});
-  $scope.uploader = new FileUploader({url: 'PHP/nexoLocal.php'});  
+  $scope.uploader = new FileUploader({url: 'PHP/nexo.php'});  
   $scope.uploader.queueLimit = 1;
   $scope.usuario.id=$stateParams.id;
   $scope.usuario.correo=$stateParams.correo;

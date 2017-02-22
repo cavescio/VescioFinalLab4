@@ -17,9 +17,9 @@ require ("informe.php");
 	</tr>
 	<tr bgcolor="lime">
 	<td><strong>nombre</strong></td>
-	<td><strong>localidad</strong></td>
 	<td><strong>direccion<strong></td>
-	<td><strong>empleado</strong></td>
+	<td><strong>localidad</strong></td>
+	<td><strong>usuario</strong></td>
 	<td><strong>porcentaje</strong></td>
 	<td><strong>fecha</strong></td>
 	<tr>
@@ -31,15 +31,15 @@ try {
 	foreach ($data as $row) 
 	{
 		$nombre=$row->nombre;
-		$localidad=$row->localidad;
 		$direccion=$row->direccion;
+		$localidad=$row->localidad;
 		$empleado=$row->empleado;
 		$porcentaje=$row->porcentaje;
 		$fecha=$row->fecha;
 ?>
 		<td><?php echo $nombre; ?></td>
-		<td><?php echo $localidad; ?></td>
 		<td><?php echo $direccion; ?></td>
+		<td><?php echo $localidad; ?></td>		
 		<td><?php echo $empleado; ?></td>
 		<td><?php echo $porcentaje; ?></td>
 		<td><?php echo $fecha; ?></td>

@@ -48,7 +48,7 @@ else{
 			if($respuesta->datos->usuario->foto!="pordefecto.png")
 			{
 				$rutaVieja="../imagenes/".$respuesta->datos->usuario->foto;
-				$rutaNueva=$respuesta->datos->usuario->dni.".".PATHINFO($rutaVieja, PATHINFO_EXTENSION);
+				$rutaNueva=$respuesta->datos->usuario->foto.".".PATHINFO($rutaVieja, PATHINFO_EXTENSION);
 				copy($rutaVieja, "../imagenes/".$rutaNueva);
 				unlink($rutaVieja);
 				$respuesta->datos->usuario->foto=$rutaNueva;
@@ -66,7 +66,7 @@ else{
 			if($respuesta->datos->usuario->foto!="pordefecto.png")
 			{
 				$rutaVieja="../imagenes/".$respuesta->datos->usuario->foto;
-				$rutaNueva=$respuesta->datos->usuario->dni.".".PATHINFO($rutaVieja, PATHINFO_EXTENSION);
+				$rutaNueva=$respuesta->datos->usuario->foto.".".PATHINFO($rutaVieja, PATHINFO_EXTENSION);
 				copy($rutaVieja, "../imagenes/".$rutaNueva);
 				unlink($rutaVieja);
 				$respuesta->datos->usuario->foto=$rutaNueva;
