@@ -93,6 +93,37 @@ input[type="text"] {
   max-height: 200px;
 }
 
+.btn-primary{
+    color: #fff;
+    background-color: #222222;
+    border-color: #000; /*set the color you want here*/    
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #9d9d9d;
+    background-color: #000;
+    border-color: #222222; /*set the color you want here*/
+}
+
+/*.btn-transparent {
+    background: none;
+    border: 3px solid #000;
+    color: #000;
+}
+
+.btn-transparent:hover,
+.btn-transparent:focus,
+.btn-transparent:active {
+    color: #000;
+    background: none;
+}
+
+.btn-transparent-invert {
+    background: none;
+    border: 3px solid #FFF;
+    color: #FFF;
+}*/
+
 
 /* ACÁ VAN ESTILOS DE TABLA*/
 
