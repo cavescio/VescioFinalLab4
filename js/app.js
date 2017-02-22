@@ -236,13 +236,13 @@ app.controller('controlLogin', function($scope, $http, $auth, $state) {
   $scope.cargarCliente = function()
   {
     $scope.correo = "cliente@cliente.com";
-    $scope.nombre = "julia";
+    $scope.nombre = "cliente1";
     $scope.clave = "987";
   };  
   $scope.cargarUsuario = function()
   {
     $scope.correo = "user@user.com";
-    $scope.nombre = "roger";
+    $scope.nombre = "usuario1";
     $scope.clave = "123";
   };  
   $scope.cargarAdmin = function()
