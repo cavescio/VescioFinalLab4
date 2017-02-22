@@ -223,6 +223,13 @@ app.controller('controlHeader', function($scope, $http, $auth, $state) {
         $state.go("login");
       });
     };
+
+    $scope.GenerarGrafico=function()
+    {
+      // window.open('http://localhost:8080/VescioFinalLab4/PHP/clases/ejemplo2.php');
+        // window.open('http://localhost:8080/VescioFinalLab4/PHP/clases/Highcharts-4.1.5/examples/pyramid/index.php');
+        window.open('http://localhost:8080/VescioFinalLab4/PHP/clases/Highcharts-4.1.5/examples/line-basic/index.php');
+    };
   }
   else{$state.go("login");}
 
