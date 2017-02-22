@@ -20,9 +20,9 @@
 							<tr>
 								<th>Nombre</th>
 								<th ng-if="esVisible.user || esVisible.cliente">  Localidad     </th> <!--  el usuario y el cliente -->
-			  					<th class="centrar">  Direccion     </th>
+			  					<th class="centrar">  Dirección     </th>
 			  					<th ng-if="esVisible.adminClient" class="centrar">  Gerente     </th> <!-- cliente y el admin -->
-			  					<th ng-if="esVisible.user">  Ubicación    </th> <!-- solamente el usuario -->
+			  					<th ng-if="esVisible.user">  Ver mapa   </th> <!-- solamente el usuario -->
 			  					<th ng-if="esVisible.user">  Realizar encuesta   </th> <!-- solamente el usuario -->
 			  					<th ng-if="esVisible.adminClient" class="centrar">  MODIFICAR        </th>	 <!-- cliente y el admin --> 
 			  					<th ng-if="esVisible.admin" class="centrar">  BORRAR     </th> <!-- admin -->
@@ -41,9 +41,9 @@
 				  				<td class="centrar"> {{local.direccion}}</td>
 				  				<td ng-if="esVisible.adminClient" class="centrar">{{local.gerente}}</td>
 
-				  				<td ng-if="esVisible.user"><button class='btn btn-info' name='Ubicacion' ui-sref="googleMaps({id:local.id, nombre:local.nombre, localidad:local.localidad, direccion:local.direccion})">   <span class='glyphicon glyphicon-map-marker'>&nbsp;</span>Ubicación</button></td>
+				  				<td ng-if="esVisible.user"><button class='btn btn-success' name='Ubicacion' ui-sref="googleMaps({id:local.id, nombre:local.nombre, localidad:local.localidad, direccion:local.direccion})">   <span class='glyphicon glyphicon-map-marker'><!-- &nbsp; --></span><!--Ubicación--></button></td>
 
-				  				<td ng-if="esVisible.user"><button class='btn btn-primary' name='formulario' ui-sref="encuesta({id:local.id, nombre:local.nombre, localidad:local.localidad, direccion:local.direccion})">   <span class='glyphicon glyphicon-edit'>&nbsp;</span>Encuesta</button></td>
+				  				<td ng-if="esVisible.user"><button class='btn btn-info' name='formulario' ui-sref="encuesta({id:local.id, nombre:local.nombre, localidad:local.localidad, direccion:local.direccion})">   <span class='glyphicon glyphicon-edit'><!-- &nbsp; --></span><!-- Encuesta --></button></td>
 
 				  				<td ng-if="esVisible.adminClient" class="centrar"><button class='btn btn-warning' name='Modificar' ui-sref="modificarLocal({id:local.id, nombre:local.nombre, localidad:local.localidad, direccion:local.direccion, gerente:local.gerente})"><span class='glyphicon glyphicon-edit'><!-- &nbsp; --></span><!-- Modificar --></button></td>
 

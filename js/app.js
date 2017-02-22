@@ -426,14 +426,15 @@ app.controller('controlAltaUsuario', function($scope, $http ,$state, FileUploade
 
 
 
-app.controller('controlModificacion', function($scope, $http, $state, $stateParams, FileUploader, $auth)
+app.controller('controlModificacion', function($scope, $http, $state, $stateParams, FileUploader, $auth, cargadoDeFoto)
 {
 
   if($auth.isAuthenticated())
   {
       $scope.usuario={};
   $scope.DatoTest="MODIFICAR DATOS";
-  $scope.uploader = new FileUploader({url: 'Datos/index.php'});
+  // $scope.uploader = new FileUploader({url: 'Datos/index.php'});
+  $scope.uploader = new FileUploader({url: 'PHP/nexoLocal.php'});  
   $scope.uploader.queueLimit = 1;
   $scope.usuario.id=$stateParams.id;
   $scope.usuario.correo=$stateParams.correo;
@@ -444,7 +445,8 @@ app.controller('controlModificacion', function($scope, $http, $state, $statePara
 
 
   $scope.cargarfoto=function(nombrefoto){
-      var direccion="imagenes/"+nombrefoto;  
+      var direccion="imagenes/"+nombrefoto;
+      console.info(direccion);  
       $http.get(direccion,{responseType:"blob"})
         .then(function (respuesta){
             console.info("datos del cargar foto",respuesta);

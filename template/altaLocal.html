@@ -14,48 +14,45 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="txtMail" ng-model="local.nombre" placeholder="Ingrese su correo electrónico"/>
+									<input type="text" class="form-control" name="email" id="txtMail" ng-model="local.nombre" placeholder="Ingrese nombre del local"/>
 								</div>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label for="username" class="cols-sm-2 control-label">Usuario</label>
+							<label for="username" class="cols-sm-2 control-label">Dirección</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="username" id="txtUser" ng-model="nombre" placeholder="Ingrese su usuario"/>
+									<input type="text" class="form-control" name="username" id="txtDireccion" ng-model="local.direccion" placeholder="Ingrese dirección del local"/>
 								</div>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label for="password" class="cols-sm-2 control-label">Contraseña</label>
+							<label for="password" class="cols-sm-2 control-label">Localidad</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="txtPass" ng-model="clave" placeholder="Ingrese su contraseña"/>
+									<input type="text" class="form-control" name="localidad" id="txtLocalidad" ng-model="local.localidad" placeholder="Ingrese localidad del local"/>
 								</div>
 							</div>
 						</div>
 
-
-
-						<div class="form-group ">
-							<button type="button" class="btn btn-primary btn-lg btn-block login-button" name="rellenarAdmin" ng-click="cargarAdmin()">Cargar Administrador</button>
+						<div class="form-group">
+							<label for="password" class="cols-sm-2 control-label">Gerente</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="Gerente" id="txtGerente" ng-model="local.gerente" placeholder="Ingrese nombre del gerente"/>
+								</div>
+							</div>
 						</div>
-						
+			
 						<div class="form-group ">
-							<button type="button" class="btn btn-primary btn-lg btn-block login-button" name="rellenarUsuario" ng-click="cargarUsuario()">Cargar Usuario</button>
-						</div>
-
-						<div class="form-group ">
-							<button type="button" class="btn btn-primary btn-lg btn-block login-button" name="rellenarCliente" ng-click="cargarCliente()">Cargar Cliente</button>
-						</div>
-
-						
-						<div class="form-group ">
-							<button type="button" class="btn btn-primary btn-lg btn-block login-button" name="guardar" ng-click="Login()">Log In</button>
+							<div class="input-group">
+								<button type="button" class="btn btn-primary btn-lg btn-block login-button" name="guardar" ng-click="Guardar()">Agregar Local</button>
+							</div>							
 						</div>
 
 					</form>
