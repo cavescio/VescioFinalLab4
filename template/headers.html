@@ -70,52 +70,5 @@
             </button>
             <a class="navbar-brand" href="#">Mistery Shopper</a>
         </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse" id="top-nav">
-            <ul class="nav navbar-nav">
-
-                <li uib-dropdown>
-                            <a uib-dropdown-toggle>Usuarios<span class="caret"></span></a>
-                            <ul uib-dropdown-menu>
-                                <li ng-if="esVisible.admin || esVisible.user"><a ui-sref="grillaUsuario">Grilla</a></li>
-                                <li><a ui-sref="altaUsuario">Agregar Usuario</a></li>
-                                <li ng-if="esVisible.admin"><a ui-sref="modificarUsuario">Modificar Usuario</a></li>
-                            </ul>
-                        <li uib-dropdown>
-                            <a uib-dropdown-toggle>Locales<span class="caret"></span></a>
-                            <ul uib-dropdown-menu>
-                                <li><a ui-sref="grillaLocal">Grilla</a></li>
-                                <li ng-if="esVisible.admin || esVisible.cliente"><a ui-sref="altaLocal">Agregar local</a></li>
-                                <!-- <li><a ui-sref="modificarLocal">Modificar local</a></li> -->
-                            </ul>
-                        <li><a ui-sref="grillaInforme">Grilla Informes</a></li> 
-                        <li><a ng-click="GenerarGrafico()">Gráficos</a></li>
-                </li>
-
-                <!-- <li ><a href="#"><i class="fa fa-home"></i> Home</a></li> -->
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <!-- <li  class="active"><a href="#"><i class="fa fa-suitcase"></i> Projects</a></li> -->
-                <li>
-                    <a href="#" class="profile-image" >
-                    <img src="imagenes/{{usuario.foto}}" class="img-circle" height="25px" width="25px"> {{usuario.nombre}} <b></b></a>
-                    <!--<ul class="dropdown-menu">
-                         <li><a href="#"><i class="fa fa-cog"></i> Account</a></li>
-                                                <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out"></i> Sign-out</a></li> 
-                    </ul>-->
-                </li>
-
-                <ul class="nav navbar-nav navbar-right">
-                <!-- <li  class="active"><a href="#"><i class="fa fa-suitcase"></i> Projects</a></li> -->
-                <li>
-                    <li><a ng-click="Logout()">Cerrar sesión</a></li>
-                    <!--<ul class="dropdown-menu">
-                         <li><a href="#"><i class="fa fa-cog"></i> Account</a></li>
-                                                <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out"></i> Sign-out</a></li> 
-                    </ul>-->
-                </li>
-            </ul>
-        </div>
-    </div>
+        
 </div>  

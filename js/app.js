@@ -31,6 +31,7 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
   .state('login', {
     url: '/login',
     views: {
+      'header': {templateUrl: 'template/headers.html', controller: 'controlHeader'},
       'principal': { templateUrl: 'template/login.html',controller: 'controlLogin' }
     }
   })
