@@ -20,7 +20,7 @@ ${demo.css}
 		<script type="text/javascript">
 $(function () {
 
-     <?php          
+    <?php          
      $data='';         
      for ($i= 0; $i<$totalinforme; $i++)  {             
         $data.=$row[$i]->porcentaje . ",";             
@@ -28,48 +28,67 @@ $(function () {
     }      
     ?>      
 
-    <?php         
+     <?php         
     $dataNames= '';         
     for ($i= 0; $i<$totalinforme; $i++)  {             
         $dataNames.="'" .$row[$i]->nombre . "',";         
     }      ?>
 
 
+
     $('#container').highcharts({
+        chart: {
+            type: 'bar'
+        },
         title: {
-            text: 'Gráfico lineal',
-            x: -20 //center
+            text: 'Gráfico de barras'
         },
         subtitle: {
-            text: 'Locales con mejor puntaje',
-            x: -20
+            text: ''
         },
         xAxis: {
-            categories: [ <?php echo ($dataNames); ?> ]
+            categories: [ <?php echo ($dataNames); ?> ],
+            title: {
+                text: null
+            }
         },
         yAxis: {
+            min: 0,
             title: {
-                text: 'Porcentaje (%)'
+                text: 'Porcentaje (%)',
+                align: 'high'
             },
-            plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
-            }]
+            labels: {
+                overflow: 'justify'
+            }
         },
         tooltip: {
             valueSuffix: '%'
         },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
         legend: {
             layout: 'vertical',
             align: 'right',
-            verticalAlign: 'middle',
-            borderWidth: 0
+            verticalAlign: 'top',
+            x: -40,
+            y: 100,
+            floating: true,
+            borderWidth: 1,
+            backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+            shadow: true
+        },
+        credits: {
+            enabled: false
         },
         series: [{
             name: 'Porcentaje',
             data: [ <?php echo($data); ?> ]
-         
         }]
     });
 });
@@ -79,12 +98,10 @@ $(function () {
 <script src="../../js/highcharts.js"></script>
 <script src="../../js/modules/exporting.js"></script>
 
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
 
+<br/><center><a href="../line-basic/index.php">Gráfico lineal</center>
 <br/><center><a href="../column-basic/index.php">Gráfico de columnas</center>
-<br/><center><a href="../bar-basic/index.php">Gráfico de barras</center>
-
-
 
 	</body>
 </html>

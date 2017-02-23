@@ -563,6 +563,17 @@ app.controller('controlGrillaLocal', function($scope, $http, $state, $auth, Fact
      $scope.ListadoLocales=respuesta;
  
    });
+
+
+    $scope.GenerarPDF=function()
+          {//OK
+            window.open('http://localhost:8080/VescioFinalLab4/PHP/clases/pdfLocal.php');
+          };
+          $scope.GenerarExcel=function()
+          {
+            window.open('http://localhost:8080/VescioFinalLab4/PHP/clases/excelLocal.php');  
+          };
+
     //$scope.Listadopersonas =factory.fu();
     //$http.get('PHP/nexo.php', { params: {accion :"traer"}})
       $scope.Borrar=function(id) {

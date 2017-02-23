@@ -11,8 +11,8 @@
 
 				<div class="text-center">
 					<div class="btn-group">
-						<td><button type="button" class="btn btn-primary" ng-click="GenerarPdfsu()"><span class='glyphicon glyphicon-file'>&nbsp;</span>Generar PDF</button></td>
-						<td><button type="button" class="btn btn-primary" ng-click="GenerarExcelsu()"><span class=' 	glyphicon glyphicon-th-list'>&nbsp;</span>Generar Excel</button></td>
+						<td><button type="button" class="btn btn-primary" ng-click="GenerarPDF()"><span class='glyphicon glyphicon-file'>&nbsp;</span>Generar PDF</button></td>
+						<td><button type="button" class="btn btn-primary" ng-click="GenerarExcel()"><span class=' 	glyphicon glyphicon-th-list'>&nbsp;</span>Generar Excel</button></td>
 						<td ng-if="esAdmin"><button type="button" class="btn btn-primary" name='alta' ui-sref="altaLocal"><span class='glyphicon glyphicon-upload'>&nbsp;</span>Alta Local</button></td>			
 					</div>
 				</div>
@@ -34,33 +34,34 @@
 						<thead>
 							<tr>
 								<th>Nombre</th>
-								<th ng-if="esVisible.user || esVisible.cliente">  Localidad     </th> <!--  el usuario y el cliente -->
-			  					<th class="centrar">  Dirección     </th>
-			  					<th ng-if="esVisible.adminClient" class="centrar">  Gerente     </th> <!-- cliente y el admin -->
+								<th>  Dirección     </th>
+			  					<th>  Localidad     </th>
+			  					<th>  Gerente     </th> <!-- cliente y el admin -->
 			  					<th ng-if="esVisible.user">  Ver mapa   </th> <!-- solamente el usuario -->
 			  					<th ng-if="esVisible.user">  Realizar encuesta   </th> <!-- solamente el usuario -->
-			  					<th ng-if="esVisible.adminClient" class="centrar">  MODIFICAR        </th>	 <!-- cliente y el admin --> 
+			  					<th ng-if="esVisible.admin || esVisible.cliente" class="centrar">  MODIFICAR        </th>	 <!-- cliente y el admin --> 
+			  					<th ng-if="esVisible.admin || esVisible.cliente">  MODIFICAR     </th>
 			  					<th ng-if="esVisible.admin" class="centrar">  BORRAR     </th> <!-- admin -->
-								<!-- <th ng-if="esVisibleUser">  MODIFICAR     </th> solamente el usuario -->
+								 
 							</tr>
 						</thead>
 
-						<tr ng-repeat="local in ListadoLocales | filter:mifiltro as resultado">
+						<!-- <tr ng-repeat="local in ListadoLocales | filter:mifiltro as resultado"> -->
 
 						<tbody>
 
 							<tr ng-repeat="local in ListadoLocales | filter:mifiltro as resultado">
 							
 								<td>{{local.nombre}}</td>
-				  				<td ng-if="esVisible.user || esVisible.cliente">{{local.localidad}}</td>
-				  				<td class="centrar"> {{local.direccion}}</td>
-				  				<td ng-if="esVisible.adminClient" class="centrar">{{local.gerente}}</td>
+								<td>{{local.direccion}}</td>
+				  				<td>{{local.localidad}}</td>		  				
+				  				<td>{{local.gerente}}</td>
 
 				  				<td ng-if="esVisible.user"><button class='btn btn-success' name='Ubicacion' ui-sref="googleMaps({id:local.id, nombre:local.nombre, localidad:local.localidad, direccion:local.direccion})">   <span class='glyphicon glyphicon-map-marker'><!-- &nbsp; --></span><!--Ubicación--></button></td>
 
 				  				<td ng-if="esVisible.user"><button class='btn btn-info' name='formulario' ui-sref="encuesta({id:local.id, nombre:local.nombre, localidad:local.localidad, direccion:local.direccion})">   <span class='glyphicon glyphicon-edit'><!-- &nbsp; --></span><!-- Encuesta --></button></td>
 
-				  				<td ng-if="esVisible.adminClient" class="centrar"><button class='btn btn-warning' name='Modificar' ui-sref="modificarLocal({id:local.id, nombre:local.nombre, localidad:local.localidad, direccion:local.direccion, gerente:local.gerente})"><span class='glyphicon glyphicon-pencil'><!-- &nbsp; --></span><!-- Modificar --></button></td>
+				  				<td ng-if="esVisible.admin || esVisible.cliente" class="centrar"><button class='btn btn-warning' name='Modificar' ui-sref="modificarLocal({id:local.id, nombre:local.nombre, localidad:local.localidad, direccion:local.direccion, gerente:local.gerente})"><span class='glyphicon glyphicon-pencil'><!-- &nbsp; --></span><!-- Modificar --></button></td>
 
 				  				<td ng-if="esVisible.admin" class="centrar"><button class='btn btn-danger' name='Borrar' ng-click="Borrar(local.id)">   <span class='glyphicon glyphicon-trash'><!-- &nbsp; --></span><!-- Borrar --></button></td>
 							</tr>

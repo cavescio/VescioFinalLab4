@@ -112,6 +112,7 @@ $(function () {
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 <br/><center><a href="../line-basic/index.php">Gráfico lineal</center>
+<br/><center><a href="../bar-basic/index.php">Gráfico de barras</center>
 
 	</body>
 </html>

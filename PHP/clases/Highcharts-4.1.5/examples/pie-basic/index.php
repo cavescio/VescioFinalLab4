@@ -1,7 +1,8 @@
 <?php 
-require "informe.php"; 
+//require "informe.php"; 
+require "../../../informe.php";
 $row = informe::TraerTodosLosInformes(); 
-var_dump($row); 
+//var_dump($row); 
 $totalinforme = count($row); 
 //var_dump($totalinforme);  
 ?>
@@ -47,28 +48,17 @@ $(function () {
             type: 'pie',
             name: 'Browser share',
             data: [
-                // ['Firefox',   45.0],
-                // ['IE',       26.8],
-                // {
-                //     name: 'Chrome',
-                //     y: 12.8,
-                //     sliced: true,
-                //     selected: true
-                // },
-                // ['Safari',    8.5],
-                // ['Opera',     6.2],
-                // ['Others',   0.7]
-                <?php
-                    //$sql=mysql_query("select * from informe order by porcentaje desc");
-                    while($res=mysql_fetch_array($sql)){ 
-                        //var_dump($res);
-                ?>
-
-                    ['<?php echo $res['nombre'] ?>', <?php echo $res['porcentaje'] ?>],
-
-                <?php
-                }
-                ?>
+                ['Firefox',   45.0],
+                ['IE',       26.8],
+                {
+                    name: 'Chrome',
+                    y: 12.8,
+                    sliced: true,
+                    selected: true
+                },
+                ['Safari',    8.5],
+                ['Opera',     6.2],
+                ['Others',   0.7]
             ]
         }]
     });
