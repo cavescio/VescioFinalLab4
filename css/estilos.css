@@ -198,3 +198,28 @@ input[type="text"] {
     border-radius: 5px;
     border: 1px solid silver;
 }
+
+/* AGREGO */
+
+/*#slides_control > div{
+  height: 200px;
+}
+img{
+  margin:auto;
+  width: 400px;
+}
+#slides_control {
+  position:absolute;
+  width: 400px;
+  left:50%;
+  top:20px;
+ margin-left:-200px;
+}*/
+
+.copyright { 
+    min-height:40px; background-color:#000000;
+}
+
+.copyright p {
+    text-align:left; color:#FFF; padding:10px 0; margin-bottom:0px;
+}

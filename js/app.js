@@ -4,8 +4,10 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
 
 .config(function($stateProvider, $urlRouterProvider, $authProvider) {
 
-  $authProvider.loginUrl = 'VescioFinalLab4/PHP/clases/Autentificador.php';
-  $authProvider.signupUrl = 'VescioFinalLab4/PHP/clases/Autentificador.php';
+  // $authProvider.loginUrl = 'VescioFinalLab4/PHP/clases/Autentificador.php';
+  // $authProvider.signupUrl = 'VescioFinalLab4/PHP/clases/Autentificador.php';
+  $authProvider.loginUrl = 'http://misteryshoppercv.esy.es/PHP/clases/Autentificador.php';
+  $authProvider.signupUrl = 'http://misteryshoppercv.esy.es/PHP/clases/Autentificador.php';
   $authProvider.tokenName = 'TokenMistery';
   $authProvider.tokenPrefix = 'TM';
   $authProvider.authHeader = 'data';
@@ -16,7 +18,8 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
     url: '/menu',
     views: {
       'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
-      'principal': { templateUrl: 'template/menuCarousel.html',controller: 'controlMenu' }      
+      'principal': { templateUrl: 'template/menu1.html',controller: 'controlMenu' },
+      'footer': { templateUrl: 'template/footer.html' }     
     }    
   })
 
@@ -24,7 +27,8 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
     url: '/carousel',
     views: {
       'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
-      'principal': { templateUrl: 'template/menuCarousel.html',controller: 'ctrl' }      
+      'principal': { templateUrl: 'template/menuCarousel.html',controller: 'ctrl' },
+      'footer': { templateUrl: 'template/footer.html' }           
     }    
   })  
 
@@ -32,7 +36,8 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
     url: '/login',
     views: {
       'header': {templateUrl: 'template/headers.html', controller: 'controlHeader'},
-      'principal': { templateUrl: 'template/login.html',controller: 'controlLogin' }
+      'principal': { templateUrl: 'template/login.html',controller: 'controlLogin' },
+      'footer': { templateUrl: 'template/footer.html' }     
     }
   })
 
@@ -40,7 +45,8 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
     url: '/grillaUsuario',
     views: {
       'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
-      'principal': { templateUrl: 'template/grillaUsuario.html',controller: 'controlGrillaUsuario' }      
+      'principal': { templateUrl: 'template/grillaUsuario.html',controller: 'controlGrillaUsuario' },
+      'footer': { templateUrl: 'template/footer.html' }           
     }
   })
 
@@ -48,7 +54,8 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
     url: '/altaUsuario',
     views: {
       'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
-      'principal': {templateUrl: 'template/altaUsuario.html', controller: 'controlAltaUsuario' }      
+      'principal': {templateUrl: 'template/altaUsuario.html', controller: 'controlAltaUsuario' },
+      'footer': { templateUrl: 'template/footer.html' }           
     }
   })
 
@@ -56,7 +63,8 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
      url: '/modificar/{id}?:correo:nombre:clave:tipo:foto',
      views: {
       'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
-      'principal': { templateUrl: 'template/altaUsuario.html',controller: 'controlModificacion' },      
+      'principal': { templateUrl: 'template/altaUsuario.html',controller: 'controlModificacion' },
+      'footer': { templateUrl: 'template/footer.html' }           
     }
   })
 
@@ -64,7 +72,8 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
     url: '/grillaLocal',
     views: {
       'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
-      'principal': { templateUrl: 'template/grillaLocales.html',controller: 'controlGrillaLocal' }      
+      'principal': { templateUrl: 'template/grillaLocales.html',controller: 'controlGrillaLocal' },
+      'footer': { templateUrl: 'template/footer.html' }           
     }
   })
 
@@ -72,7 +81,8 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
     url: '/altaLocal',
     views: {
       'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
-      'principal': {templateUrl: 'template/altaLocal.html', controller: 'controlAltaLocal' }      
+      'principal': {templateUrl: 'template/altaLocal.html', controller: 'controlAltaLocal' },
+      'footer': { templateUrl: 'template/footer.html' }           
     }
   })
 
@@ -80,7 +90,8 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
       url: '/modificarLocal/{id}?:nombre:localidad:direccion:gerente',
      views: {
       'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
-      'principal': { templateUrl: 'template/altaLocal.html',controller: 'controlModificarLocal' }      
+      'principal': { templateUrl: 'template/altaLocal.html',controller: 'controlModificarLocal' },
+      'footer': { templateUrl: 'template/footer.html' }           
     }
   })
 
@@ -90,7 +101,8 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
     url: '/grillaInforme',
     views: {
       'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
-      'principal': {templateUrl: 'template/grillaInforme.html', controller: 'controlGrillaInforme' }      
+      'principal': {templateUrl: 'template/grillaInforme.html', controller: 'controlGrillaInforme' },
+      'footer': { templateUrl: 'template/footer.html' }           
     }
   })
 
@@ -99,7 +111,8 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
   url: '/googleMaps/{id}?:nombre:localidad:direccion',
   views: {
     'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
-    'principal': {templateUrl: 'template/mapaGoogle.html', controller: 'controlMapa' }      
+    'principal': {templateUrl: 'template/mapaGoogle.html', controller: 'controlMapa' },
+    'footer': { templateUrl: 'template/footer.html' }           
     }
   })
 
@@ -108,7 +121,8 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
     url: '/reporte',
     views: {
       'principal': {templateUrl: 'template/menuDos.html', controller: 'controlReporte' },
-      'header': {templateUrl: 'template/header.html', controller: 'controlHeader'}
+      'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
+      'footer': { templateUrl: 'template/footer.html' }     
     }
   })
 
@@ -118,7 +132,8 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
      views: {
        'principal': { templateUrl: 'template/encuesta.html',controller: 'controlEncuesta' },
      // 'principal': { templateUrl: 'template/altaLocal.html',controller: 'controlEncuesta' },
-      'header': {templateUrl: 'template/header.html', controller: 'controlHeader'}
+      'header': {templateUrl: 'template/header.html', controller: 'controlHeader'},
+      'footer': { templateUrl: 'template/footer.html' }     
     }
   })
 
@@ -132,7 +147,7 @@ var app = angular.module('Mistery', ['ngAnimate','ui.router','angularFileUpload'
 
    
 
-app.controller('controlMenu', function($scope, $http, $auth, $state) {
+app.controller('controlMenu', function($scope, $http, $auth, $state, $interval) {
   $scope.DatoTest="MENÚ";
 
   if($auth.isAuthenticated())
@@ -163,6 +178,8 @@ app.controller('controlMenu', function($scope, $http, $auth, $state) {
       });
     };
   }
+
+
   else{$state.go("login");}
 
 });
@@ -750,11 +767,13 @@ app.controller('controlGrillaInforme', function($scope, $http, $state, $auth, Fa
 
     $scope.GenerarPDF=function()
     {//OK
-      window.open('http://localhost:8080/VescioFinalLab4/PHP/clases/pdfInforme.php');
+      //window.open('http://localhost:8080/VescioFinalLab4/PHP/clases/pdfInforme.php');
+      window.open('http://misteryshoppercv.esy.es/PHP/clases/pdfInforme.php');
     };
     $scope.GenerarExcel=function()
     {
-      window.open('http://localhost:8080/VescioFinalLab4/PHP/clases/excelInforme.php');  
+      //window.open('http://localhost:8080/VescioFinalLab4/PHP/clases/excelInforme.php');
+      window.open('http://misteryshoppercv.esy.es/PHP/clases/excelInforme.php');  
     };
 
       $scope.Borrar=function(id) {
@@ -1001,7 +1020,6 @@ app.controller('ctrl', function($scope) {
      { src:"img/img3.jpg", alt:"", caption:""},
   ];
 });
-
 
 
 
@@ -1302,3 +1320,18 @@ app.factory('FactoryInforme', function(ServicioInforme){
 
 });
 
+app.directive('carousel', function($timeout) {
+   return {
+      restrict: 'E',
+      scope: {
+        links: '=' 
+      },
+      templateUrl: 'template/carousel.html',
+      link: function(scope, element) {
+        $timeout(function() {
+          $('.carousel-indicators li',element).first().addClass('active');
+          $('.carousel-inner .item',element).first().addClass('active');
+        });
+      }
+   }
+});

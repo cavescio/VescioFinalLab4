@@ -1,6 +1,6 @@
 <div class="container">
     
-    	<div class="row">
+    	<div class="row animated pulse">
 			<div class="col-md-12">
 
 				<form action="" role="search">
@@ -13,7 +13,7 @@
 					<div class="btn-group">
 						<td><button type="button" class="btn btn-primary" ng-click="GenerarPDF()"><span class='glyphicon glyphicon-file'>&nbsp;</span>Generar PDF</button></td>
 						<td><button type="button" class="btn btn-primary" ng-click="GenerarExcel()"><span class=' 	glyphicon glyphicon-th-list'>&nbsp;</span>Generar Excel</button></td>
-						<td ng-if="esAdmin"><button type="button" class="btn btn-primary" name='alta' ui-sref="altaUsuario"><span class='glyphicon glyphicon-upload'>&nbsp;</span>Alta Sucursal</button></td>			
+						<!-- <td ng-if="esAdmin"><button type="button" class="btn btn-primary" name='alta' ui-sref="altaUsuario"><span class='glyphicon glyphicon-upload'>&nbsp;</span>Alta Sucursal</button></td>	 -->		
 					</div>
 				</div>
 
@@ -44,7 +44,7 @@
 			  					<th>  Porcentaje    </th> 
 			  					<th>  Fecha    </th>			  					
 			  					<!-- <th>  MODIFICAR        </th>	 --> 
-			  					<th ng-if="esVisible.admin" class="centrar">  BORRAR     </th>
+			  					<th ng-if="esVisible.admin" class="centrar">  ELIMINARBORRAR     </th>
 								<!-- <th ng-if="esVisibleUser">  MODIFICAR     </th>  -->
 							</tr>
 						</thead>
@@ -67,7 +67,7 @@
 				  				<td>{{informe.fecha}}</td>
 
 				  				
-				  				<td ng-if="esVisible.admin" class="centrar"><button class='btn btn-danger' name='Borrar' ng-click="Borrar(informe.id)">   <span class='glyphicon glyphicon-remove-circle'><!-- &nbsp; --></span><!-- Borrar --></button></td>
+				  				<td ng-if="esVisible.admin" class="centrar"><button class='btn btn-danger' name='Borrar' ng-click="Borrar(informe.id)">   <span class='glyphicon glyphicon-trash'><!-- &nbsp; --></span><!-- Borrar --></button></td>
 							</tr>
 
 							<tr ng-if="resultado.length == 0">

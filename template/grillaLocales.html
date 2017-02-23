@@ -1,6 +1,6 @@
 <div class="container">
     
-    	<div class="row">
+    	<div class="row animated pulse">
 			<div class="col-md-12">
 
 				<form action="" role="search">
@@ -8,6 +8,14 @@
 				  		 <input type="search" class="form-control" placeholder="Buscar locales..." ng-model="mifiltro"></input>
 				  	</div>					
 				</form>
+
+				<div class="text-center">
+					<div class="btn-group">
+						<td><button type="button" class="btn btn-primary" ng-click="GenerarPdfsu()"><span class='glyphicon glyphicon-file'>&nbsp;</span>Generar PDF</button></td>
+						<td><button type="button" class="btn btn-primary" ng-click="GenerarExcelsu()"><span class=' 	glyphicon glyphicon-th-list'>&nbsp;</span>Generar Excel</button></td>
+						<td ng-if="esAdmin"><button type="button" class="btn btn-primary" name='alta' ui-sref="altaLocal"><span class='glyphicon glyphicon-upload'>&nbsp;</span>Alta Local</button></td>			
+					</div>
+				</div>
 
 				<div class="panel panel-negro">
 					<div class="panel-heading">
@@ -52,9 +60,9 @@
 
 				  				<td ng-if="esVisible.user"><button class='btn btn-info' name='formulario' ui-sref="encuesta({id:local.id, nombre:local.nombre, localidad:local.localidad, direccion:local.direccion})">   <span class='glyphicon glyphicon-edit'><!-- &nbsp; --></span><!-- Encuesta --></button></td>
 
-				  				<td ng-if="esVisible.adminClient" class="centrar"><button class='btn btn-warning' name='Modificar' ui-sref="modificarLocal({id:local.id, nombre:local.nombre, localidad:local.localidad, direccion:local.direccion, gerente:local.gerente})"><span class='glyphicon glyphicon-edit'><!-- &nbsp; --></span><!-- Modificar --></button></td>
+				  				<td ng-if="esVisible.adminClient" class="centrar"><button class='btn btn-warning' name='Modificar' ui-sref="modificarLocal({id:local.id, nombre:local.nombre, localidad:local.localidad, direccion:local.direccion, gerente:local.gerente})"><span class='glyphicon glyphicon-pencil'><!-- &nbsp; --></span><!-- Modificar --></button></td>
 
-				  				<td ng-if="esVisible.admin" class="centrar"><button class='btn btn-danger' name='Borrar' ng-click="Borrar(local.id)">   <span class='glyphicon glyphicon-remove-circle'><!-- &nbsp; --></span><!-- Borrar --></button></td>
+				  				<td ng-if="esVisible.admin" class="centrar"><button class='btn btn-danger' name='Borrar' ng-click="Borrar(local.id)">   <span class='glyphicon glyphicon-trash'><!-- &nbsp; --></span><!-- Borrar --></button></td>
 							</tr>
 						</tbody>
 					</table>

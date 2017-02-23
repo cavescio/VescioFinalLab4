@@ -170,6 +170,9 @@ class Usuario
 
 
 
+
+
+
 	public static function TraerPadronTest()
 	{
 		$arrayDePadron=array();
