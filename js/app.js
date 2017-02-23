@@ -750,11 +750,11 @@ app.controller('controlGrillaInforme', function($scope, $http, $state, $auth, Fa
 
     $scope.GenerarPDF=function()
     {//OK
-      window.open('http://localhost:8080/TpLab4Iadanza/PHP/clases/pdfInforme.php');
+      window.open('http://localhost:8080/VescioFinalLab4/PHP/clases/pdfInforme.php');
     };
     $scope.GenerarExcel=function()
     {
-      window.open('http://localhost:8080/TpLab4Iadanza/PHP/clases/excelInforme.php');  
+      window.open('http://localhost:8080/VescioFinalLab4/PHP/clases/excelInforme.php');  
     };
 
       $scope.Borrar=function(id) {
