@@ -313,6 +313,15 @@ app.controller('controlGrillaUsuario', function($scope, $http, $location, $state
            
           });
 
+          $scope.GenerarPDF=function()
+          {//OK
+            window.open('http://localhost:8080/VescioFinalLab4/PHP/clases/pdfUsuario.php');
+          };
+          $scope.GenerarExcel=function()
+          {
+            window.open('http://localhost:8080/VescioFinalLab4/PHP/clases/excelUsuario.php');  
+          };
+
 
             // $http.get('Datos/usuarios')
             // .then(function(respuesta) {       
@@ -738,6 +747,16 @@ app.controller('controlGrillaInforme', function($scope, $http, $state, $auth, Fa
    });
     //$scope.Listadopersonas =factory.fu();
     //$http.get('PHP/nexo.php', { params: {accion :"traer"}})
+
+    $scope.GenerarPDF=function()
+    {//OK
+      window.open('http://localhost:8080/TpLab4Iadanza/PHP/clases/pdfInforme.php');
+    };
+    $scope.GenerarExcel=function()
+    {
+      window.open('http://localhost:8080/TpLab4Iadanza/PHP/clases/excelInforme.php');  
+    };
+
       $scope.Borrar=function(id) {
 
       console.log("borrar"+id);
@@ -807,7 +826,7 @@ app.controller('controlReporte', function($scope, $http, $auth, $state, FactoryU
 
     $scope.GenerarPdfsu=function()
     {
-      window.open('http://localhost:8080/tigerush/PHP/plantillapdf2.php');
+      window.open('http://localhost:8080/VescioFinalLab4/PHP/plantillapdf2.php');
     };
     $scope.GenerarExcelsu=function()
     {//OK

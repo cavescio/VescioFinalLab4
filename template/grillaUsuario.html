@@ -3,11 +3,21 @@
     	<div class="row">
 			<div class="col-md-12">
 
+				
+
 				<form action="" role="search">
 				  	<div class="form-group">
 				  		 <input type="search" class="form-control" placeholder="Buscar usuarios..." ng-model="mifiltro"></input>
 				  	</div>					
 				</form>
+
+				<div class="text-center">
+					<div class="btn-group">
+						<td><button type="button" class="btn btn-primary" ng-click="GenerarPdfsu()"><span class='glyphicon glyphicon-file'>&nbsp;</span>Generar PDF</button></td>
+						<td><button type="button" class="btn btn-primary" ng-click="GenerarExcelsu()"><span class=' 	glyphicon glyphicon-th-list'>&nbsp;</span>Generar Excel</button></td>
+						<td ng-if="esAdmin"><button type="button" class="btn btn-primary" name='alta' ui-sref="altaUsuario"><span class='glyphicon glyphicon-upload'>&nbsp;</span>Alta Sucursal</button></td>			
+					</div>
+				</div>
 
 				<div class="panel panel-negro">
 					<div class="panel-heading">
